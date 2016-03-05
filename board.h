@@ -6,7 +6,7 @@
 
 namespace tictactoe {
   
-  std::string symbolView[NUM_SYMBOLS] = {" ", "O", "X"};
+  const std::string SYMBOL_VIEW[NUM_SYMBOLS] = {" ", "O", "X"};
 
   class BoardView {
 

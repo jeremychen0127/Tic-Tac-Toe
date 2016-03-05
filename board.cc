@@ -8,13 +8,27 @@ using tictactoe::BoardView;
 BoardView::BoardView() {
   // Initializes each square to BLANK
   for (int square = NORTH_WEST; square < DIMENSION; square++) {
-    board[square] = symbolView[BLANK];
+    board[square] = SYMBOL_VIEW[BLANK];
   }
 }
 
 void BoardView::updateSquareView(Square square, Symbol symbol) {
-  board[square] = symbolView[symbol];
+  board[square] = SYMBOL_VIEW[symbol];
+  print();
 }
 
-// TODO
-void BoardView::print() {}
+void BoardView::print() {
+  cout << "___________________" << endl;
+  cout << "|  " << board[NORTH_WEST];
+  cout << "  |  " << board[NORTH];
+  cout << "  |  " << board[NORTH_EAST] << "  |" << endl;
+  cout << "|_____|_____|_____|" << endl;
+  cout << "|  " << board[WEST];
+  cout << "  |  " << board[CENTRE];
+  cout << "  |  " << board[EAST] << "  |" << endl;
+  cout << "|_____|_____|_____|" << endl;
+  cout << "|  " << board[SOUTH_WEST];
+  cout << "  |  " << board[SOUTH];
+  cout << "  |  " << board[SOUTH_EAST] << "  |" << endl;
+  cout << "|_____|_____|_____|" << endl;
+}
