@@ -3,20 +3,22 @@
 
 #include "game.h"
 
-// Board class
-class Board {
+namespace tictactoe {
+  // Board class
+  class Board {
 
-  // The board
-  tictactoe::Symbol board[tictactoe::DIMENSION];
+    // The board
+    Symbol board[DIMENSION];
 
-  public:
-    Board();
+    public:
+      Board();
 
-    // Updates the position with the symbol occupied
-    void update(tictactoe::Symbol symbol, tictactoe::Position position);
+      // Updates the position with the symbol occupied
+      void update(Symbol symbol, Position position);
 
-    // Prints the board
-    void print();
-};
+      // Prints the board
+      void print();
+  };
+}
 
 #endif

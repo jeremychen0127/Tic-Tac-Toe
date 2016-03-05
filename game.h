@@ -1,8 +1,6 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
-class Player;
-
 namespace tictactoe {
 
   // Board dimension
@@ -23,6 +21,8 @@ namespace tictactoe {
     SOUTH,
     SOUTH_EAST
   };
+
+  class Player;
 
   // Game class for handling the game flow
   class Game {

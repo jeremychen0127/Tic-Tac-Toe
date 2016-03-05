@@ -3,11 +3,7 @@
 
 using std::cout;
 using std::endl;
-using tictactoe::Symbol;
-using tictactoe::Position;
-using tictactoe::BLANK;
-using tictactoe::DIMENSION;
-using tictactoe::NORTH_WEST;
+using tictactoe::Board;
 
 Board::Board() {
   // Initializes each position to BLANK
