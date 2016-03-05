@@ -44,22 +44,22 @@ namespace tictactoe {
     GameController *gameController;
     Symbol board[DIMENSION];
 
-    // If a player wins, returns the line of winning
-    // If draw, return DRAW
-    // If the game is not over yet, return NOT_OVER
-    WinningCase isOver();
-
-    // Returns
-    //   O if O is the winner
-    //   X if X is the winner
-    Symbol getWinner(WinningCase winningCase);
-
     public:
       Game(GameController *gameController);
 
       // Updates the symbol on the square
       // Intended to be called by Player
       void updateSquare(Square square, Symbol symbol);
+
+      // If a player wins, returns the line of winning
+      // If draw, return DRAW
+      // If the game is not over yet, return NOT_OVER
+      WinningCase isOver();
+
+      // Returns
+      //   O if O is the winner
+      //   X if X is the winner
+      Symbol getWinner(WinningCase winningCase);
   };
 }
 

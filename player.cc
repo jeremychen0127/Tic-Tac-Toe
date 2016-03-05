@@ -5,7 +5,7 @@ using std::string;
 using tictactoe::Symbol;
 
 Player::Player(string name, Symbol symbol)
-    :name(name), symbol(symbol) {}
+    :symbol(symbol), name(name) {}
 
 Symbol Player::getSymbol() {
   return symbol;
@@ -18,6 +18,3 @@ int Player::getScore() {
 string Player::getName() {
   return name;
 }
-
-// TODO
-void Player::play() {}

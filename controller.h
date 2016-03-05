@@ -12,8 +12,8 @@ namespace tictactoe {
     Game *game;
     BoardView *view;
     Symbol turn;
-    Player *player1;
-    Player *player2;
+    Player *playerX;
+    Player *playerO;
 
     public:
       GameController();

@@ -6,6 +6,12 @@ using tictactoe::WinningCase;
 using tictactoe::Symbol;
 
 WinningCase Game::isOver() {
+  for (int square = NORTH_WEST; square < DIMENSION; ++square) {
+    if (BLANK == board[square]) {
+      return NOT_OVER;
+    }
+  }
+
   if (board[CENTRE] == board[NORTH_WEST]) {
     if (board[CENTRE] == board[SOUTH_EAST]) {
       return TOP_LEFT_DIAGONAL;
@@ -78,6 +84,9 @@ Symbol Game::getWinner(WinningCase winningCase) {
     case BOTTOM_ROW:
     case RIGHT_COLUMN:
       return board[SOUTH_EAST];
+
+    default:
+      return BLANK;
   }
 }
 
