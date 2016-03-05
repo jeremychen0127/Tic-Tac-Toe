@@ -3,18 +3,18 @@
 
 using std::cout;
 using std::endl;
-using tictactoe::Board;
+using tictactoe::BoardView;
 
-Board::Board() {
-  // Initializes each position to BLANK
-  for (int p = NORTH_WEST; p < DIMENSION; p++) {
-    board[p] = BLANK;
+BoardView::BoardView() {
+  // Initializes each square to BLANK
+  for (int square = NORTH_WEST; square < DIMENSION; square++) {
+    board[square] = symbolView[BLANK];
   }
 }
 
-void Board::update(Symbol symbol, Position position) {
-  board[position] = symbol;
+void BoardView::updateSquareView(Square square, Symbol symbol) {
+  board[square] = symbolView[symbol];
 }
 
 // TODO
-void Board::print() {}
+void BoardView::print() {}
