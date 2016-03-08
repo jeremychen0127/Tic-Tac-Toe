@@ -22,6 +22,10 @@ namespace tictactoe {
       // Intended to be called by Game
       void updateSquareView(Square square, Symbol symbol);
 
+      // Clears the board view
+      // Intended to be called by Game
+      void clearBoardView();
+
       // Starts the game
       void play();
   };

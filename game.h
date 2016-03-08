@@ -60,6 +60,9 @@ namespace tictactoe {
       //   O if O is the winner
       //   X if X is the winner
       Symbol getWinner(WinningCase winningCase);
+
+      // Restarts the game
+      void restart();
   };
 }
 

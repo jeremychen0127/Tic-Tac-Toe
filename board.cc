@@ -35,3 +35,9 @@ void BoardView::print() {
   cout << "  |  " << board[SOUTH_EAST] << "  |" << endl;
   cout << "|_____|_____|_____|" << endl;
 }
+
+void BoardView::clear() {
+  for (int square = NORTH_WEST; square < DIMENSION; square++) {
+    board[square] = SYMBOL_VIEW[BLANK];
+  }
+}

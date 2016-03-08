@@ -21,6 +21,9 @@ namespace tictactoe {
 
       // Prints the board
       void print();
+
+      // Clears the board
+      void clear();
   };
 }
 

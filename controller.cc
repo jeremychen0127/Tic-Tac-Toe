@@ -56,4 +56,17 @@ void GameController::play() {
     Symbol winner = game->getWinner(game->isOver());
     cout << "The game is over! WINNER: " << SYMBOL_VIEW[winner] << endl;
   }
+
+  cout << "New Game (Y/N)? ";
+  string response;
+  cin >> response;
+  if ("Y" == response || "YES" == response || "y" == response ||
+      "Yes" == response || "yes" == response) {
+    game->restart();
+    play();
+  }
+}
+
+void GameController::clearBoardView() {
+  view->clear();
 }

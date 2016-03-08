@@ -100,3 +100,11 @@ void Game::updateSquare(Square square, Symbol symbol) {
   board[square] = symbol;
   gameController->updateSquareView(square, symbol);
 }
+
+void Game::restart() {
+  for (int square = NORTH_WEST; square < DIMENSION; ++square) {
+    board[square] = BLANK;
+  }
+
+  gameController->clearBoardView();
+}
