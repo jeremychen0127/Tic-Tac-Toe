@@ -29,33 +29,22 @@ void GameController::play() {
   cout << "Name of Player O: ";
   cin >> name;
   playerO = new Player(name, O);
+  view->print();
 
   int intSquare;
   do {
     if (X == turn) {
-      cout << "___________________" << endl;
-      cout << "|  " << 1 << "  |  " << 2 << "  |  " << 3 << "  |" << endl;
-      cout << "|_____|_____|_____|" << endl;
-      cout << "|  " << 4 << "  |  " << 5 << "  |  " << 6 << "  |" << endl;
-      cout << "|_____|_____|_____|" << endl;
-      cout << "|  " << 7 << "  |  " << 8 << "  |  " << 9 << "  |" << endl;
-      cout << "|_____|_____|_____|" << endl;
       cout << playerX->getName() << "'s turn (X)" << endl;
       cout << "Square you would like to place (enter 1-9): ";
       cin >> intSquare;
+      cout << "---------------------------------------------------" << endl;
       game->updateSquare(static_cast<Square>(intSquare - 1), X);
       turn = O;
     } else {
-      cout << "___________________" << endl;
-      cout << "|  " << 1 << "  |  " << 2 << "  |  " << 3 << "  |" << endl;
-      cout << "|_____|_____|_____|" << endl;
-      cout << "|  " << 4 << "  |  " << 5 << "  |  " << 6 << "  |" << endl;
-      cout << "|_____|_____|_____|" << endl;
-      cout << "|  " << 7 << "  |  " << 8 << "  |  " << 9 << "  |" << endl;
-      cout << "|_____|_____|_____|" << endl;
-      cout << playerO->getName() << "'s turn" << endl;
+      cout << playerO->getName() << "'s turn (O)" << endl;
       cout << "Square you would like to place (enter 1-9): ";
       cin >> intSquare;
+      cout << "---------------------------------------------------" << endl;
       game->updateSquare(static_cast<Square>(intSquare - 1), O);
       turn = X;
     }
