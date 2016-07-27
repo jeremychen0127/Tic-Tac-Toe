@@ -24,6 +24,20 @@ void GameController::updateSquareView(Square square, Symbol symbol) {
   view->updateSquareView(square, symbol);
 }
 
+// Gets input from user to place their X or O to the square
+void selectSquare(int &intSquare) {
+  cout << "Square you would like to place (enter 1-9): ";
+  while (true) {
+    if (cin >> intSquare && intSquare >= 1 && intSquare <= 9) break;
+    else {
+      cout << "Sorry! Invalid input! Please try again!" << endl;
+      cout << "Square you would like to place (enter 1-9): ";
+      cin.clear();
+    }
+  }
+  cout << "---------------------------------------------------" << endl;
+}
+
 void GameController::play() {
   string name;
   cout << "Name of Player X: ";
@@ -38,25 +52,21 @@ void GameController::play() {
   do {
     if (X == turn) {
       cout << playerX->getName() << "'s turn (X)" << endl;
-      cout << "Square you would like to place (enter 1-9): ";
-      cin >> intSquare;
-      cout << "---------------------------------------------------" << endl;
+      selectSquare(intSquare);
       try {
         game->updateSquare(static_cast<Square>(intSquare - 1), X);
         turn = O;
       } catch (Exception &exception) {
-        cerr << exception.getMessage() << endl;
+        cerr << exception.getMessage() << " Please try another square" << endl;
       }
     } else {
       cout << playerO->getName() << "'s turn (O)" << endl;
-      cout << "Square you would like to place (enter 1-9): ";
-      cin >> intSquare;
-      cout << "---------------------------------------------------" << endl;
+      selectSquare(intSquare);
       try {
         game->updateSquare(static_cast<Square>(intSquare - 1), O);
         turn = X;
       } catch (Exception &exception) {
-        cerr << exception.getMessage() << endl;
+        cerr << exception.getMessage() << " Please try another square" << endl;
       }
     }
   } while (NOT_OVER == game->isOver());

@@ -103,7 +103,7 @@ void Game::updateSquare(Square square, Symbol symbol) {
     board[square] = symbol;
     gameController->updateSquareView(square, symbol);
   } else {
-    throw Exception("The square has already been occupied");
+    throw Exception("The square has already been occupied!");
   }
 }
 
