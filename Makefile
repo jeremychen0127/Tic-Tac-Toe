@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-MMD -Wall -g
-OBJECTS=main.o controller.o board.o game.o player.o
+OBJECTS=main.o controller.o board.o game.o player.o exception.o
 DEPENDS=${OBJECTS:.o=.d}
 EXEC=tictactoe
 
