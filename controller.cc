@@ -4,11 +4,14 @@
 #include "game.h"
 #include "board.h"
 #include "player.h"
+#include "exception.h"
 
 using tictactoe::GameController;
 using tictactoe::Square;
+using tictactoe::Exception;
 using std::cin;
 using std::cout;
+using std::cerr;
 using std::endl;
 using std::string;
 
@@ -38,15 +41,23 @@ void GameController::play() {
       cout << "Square you would like to place (enter 1-9): ";
       cin >> intSquare;
       cout << "---------------------------------------------------" << endl;
-      game->updateSquare(static_cast<Square>(intSquare - 1), X);
-      turn = O;
+      try {
+        game->updateSquare(static_cast<Square>(intSquare - 1), X);
+        turn = O;
+      } catch (Exception &exception) {
+        cerr << exception.getMessage() << endl;
+      }
     } else {
       cout << playerO->getName() << "'s turn (O)" << endl;
       cout << "Square you would like to place (enter 1-9): ";
       cin >> intSquare;
       cout << "---------------------------------------------------" << endl;
-      game->updateSquare(static_cast<Square>(intSquare - 1), O);
-      turn = X;
+      try {
+        game->updateSquare(static_cast<Square>(intSquare - 1), O);
+        turn = X;
+      } catch (Exception &exception) {
+        cerr << exception.getMessage() << endl;
+      }
     }
   } while (NOT_OVER == game->isOver());
 

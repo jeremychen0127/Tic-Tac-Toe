@@ -1,9 +1,11 @@
 #include "game.h"
 #include "controller.h"
+#include "exception.h"
 
 using tictactoe::Game;
 using tictactoe::WinningCase;
 using tictactoe::Symbol;
+using tictactoe::Exception;
 
 WinningCase Game::isOver() {
   if (board[CENTRE] != BLANK) {
@@ -97,8 +99,12 @@ Game::Game(GameController *gameController): gameController(gameController) {
 }
 
 void Game::updateSquare(Square square, Symbol symbol) {
-  board[square] = symbol;
-  gameController->updateSquareView(square, symbol);
+  if (board[square] == BLANK) {
+    board[square] = symbol;
+    gameController->updateSquareView(square, symbol);
+  } else {
+    throw Exception("The square has already been occupied");
+  }
 }
 
 void Game::restart() {
