@@ -66,7 +66,7 @@ namespace tictactoe {
       // Restarts the game
       void restart();
 
-      Square minimax();
+      int minimax();
   };
 }
 
