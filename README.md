@@ -1,4 +1,4 @@
-# Tic-Tac-Toe
+# Tic-Tac-Toe (with Unbeatable AI Player)
 
 This is a command-line tic-tac-toe game implemented using MVC architecture in C++.
 
