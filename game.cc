@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "game.h"
 #include "controller.h"
 #include "exception.h"
@@ -6,6 +7,8 @@ using tictactoe::Game;
 using tictactoe::WinningCase;
 using tictactoe::Symbol;
 using tictactoe::Exception;
+using tictactoe::Square;
+using std::copy;
 
 WinningCase Game::isOver() {
   if (board[CENTRE] != BLANK) {
@@ -114,3 +117,51 @@ void Game::restart() {
 
   gameController->clearBoardView();
 }
+
+int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
+  board[squareToPlace] = symbol;
+
+  if (isOver() == DRAW) {
+    return 0; // TODO: magical number
+
+  } else if (isOver() == NOT_OVER) {
+    Square localBestMove;
+    int localBestResult = -2; // TODO: magical number
+    int result;
+
+    for (int square = squareToPlace; square < DIMENSION; ++square) {
+      if (board[square] == BLANK) {
+        result = getBestResultOfTheMove(static_cast<Square>(square), symbol == O ? X : O);
+        board[square] = BLANK;
+        if (result > localBestResult) {
+          localBestResult = result;
+          localBestMove = static_cast<Square>(square);
+        }
+      }
+    }
+
+    return localBestResult;
+
+  } else {
+    return symbol == O ? 1 : -1; // TODO: magical number
+  }
+}
+
+Square Game::minimax() {
+  Square bestMove;
+  int bestResult = -2; // TODO: magical number
+  for (int square = NORTH_WEST; square < DIMENSION; ++square) {
+    if (board[square] == BLANK) {
+      int result = getBestResultOfTheMove(static_cast<Square>(square), O);
+      board[square] = BLANK;
+
+      if (result > bestResult) {
+        bestResult = result;
+        bestMove = static_cast<Square>(square);
+      }
+    }
+  }
+
+  return bestMove;
+}
+
