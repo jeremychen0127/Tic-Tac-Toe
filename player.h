@@ -16,6 +16,7 @@ namespace tictactoe {
       Symbol getSymbol();
       int getScore();
       std::string getName();
+      bool isComputer();
   };
 }
 

@@ -18,3 +18,7 @@ int Player::getScore() {
 string Player::getName() {
   return name;
 }
+
+bool Player::isComputer() {
+  return isComputerPlayer;
+}
