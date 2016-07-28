@@ -43,6 +43,8 @@ namespace tictactoe {
   class Game {
     GameController *gameController;
     Symbol board[DIMENSION];
+    
+    int getBestResultOfTheMove(Square squareToPlace, Symbol symbol);
 
     public:
       Game(GameController *gameController);
@@ -63,6 +65,8 @@ namespace tictactoe {
 
       // Restarts the game
       void restart();
+
+      int minimax();
   };
 }
 
