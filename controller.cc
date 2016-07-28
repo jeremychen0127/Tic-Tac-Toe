@@ -45,7 +45,15 @@ void GameController::play() {
   playerX = new Player(name, X);
   cout << "Name of Player O: ";
   cin >> name;
-  playerO = new Player(name, O);
+  cout << "Turn on unbeatable computer player (Y/N)? ";
+  string response;
+  cin >> response;
+  if ("Y" == response || "YES" == response || "y" == response ||
+      "Yes" == response || "yes" == response) {
+    playerO = new Player(name, O, true);
+  } else {
+    playerO = new Player(name, O);
+  }
   view->print();
 
   int intSquare;
@@ -61,7 +69,12 @@ void GameController::play() {
       }
     } else {
       cout << playerO->getName() << "'s turn (O)" << endl;
-      selectSquare(intSquare);
+      if (playerO->isComputer()) {
+        intSquare = game->minimax();
+      } else {
+        selectSquare(intSquare);
+      }
+
       try {
         game->updateSquare(static_cast<Square>(intSquare - 1), O);
         turn = X;
@@ -79,7 +92,6 @@ void GameController::play() {
   }
 
   cout << "New Game (Y/N)? ";
-  string response;
   cin >> response;
   if ("Y" == response || "YES" == response || "y" == response ||
       "Yes" == response || "yes" == response) {
