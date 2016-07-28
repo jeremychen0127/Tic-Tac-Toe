@@ -9,9 +9,10 @@ namespace tictactoe {
     Symbol symbol;
     std::string name;
     int score;
+    bool isComputerPlayer;
 
     public:
-      Player(std::string name, Symbol symbol);
+      Player(std::string name, Symbol symbol, bool isComputerPlayer = false);
       Symbol getSymbol();
       int getScore();
       std::string getName();

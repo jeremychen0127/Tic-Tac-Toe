@@ -4,8 +4,8 @@ using tictactoe::Player;
 using std::string;
 using tictactoe::Symbol;
 
-Player::Player(string name, Symbol symbol)
-    :symbol(symbol), name(name) {}
+Player::Player(string name, Symbol symbol, bool isComputerPlayer)
+    :symbol(symbol), name(name), isComputerPlayer(isComputerPlayer) {}
 
 Symbol Player::getSymbol() {
   return symbol;
