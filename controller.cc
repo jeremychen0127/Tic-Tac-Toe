@@ -70,7 +70,9 @@ void GameController::play() {
     } else {
       cout << playerO->getName() << "'s turn (O)" << endl;
       if (playerO->isComputer()) {
+        cout << "Computer selecting..." << endl;
         intSquare = game->minimax();
+        cout << "---------------------------------------------------" << endl;
       } else {
         selectSquare(intSquare);
       }
