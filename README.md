@@ -1,6 +1,13 @@
 # Tic-Tac-Toe
 
-This is a command-line tic-tac-toe game implemented using MVC architecture.
+This is a command-line tic-tac-toe game implemented using MVC architecture in C++.
+
+## Get Started
+1. Clone/Download the project
+2. Navigate your terminal into the directory of this project
+3. Type command `make` to compile
+4. Type command `./tictactoe` to start a game
+5. Enjoy!
 
 ## Unbeatable Computer Player
 An option to turn on an unbeatable computer player will be available soon (by the end of August).
