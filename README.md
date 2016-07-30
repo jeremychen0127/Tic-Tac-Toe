@@ -11,3 +11,6 @@ This is a command-line tic-tac-toe game implemented using MVC architecture in C+
 
 ## Unbeatable Computer Player
 The option to turn on an unbeatable computer player is available now!
+
+## Fun Thing to Try!
+You can make both players unbeatable AI players. You probably know the results are always going to be draw, but it is a fun thing to see!
