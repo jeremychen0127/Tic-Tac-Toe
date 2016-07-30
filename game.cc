@@ -146,8 +146,10 @@ int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
 }
 
 int Game::minimax(Symbol symbol) {
+  const int INITIAL_RESULT = symbol == O ? -2 : 2;
+
   int bestMove;
-  int bestResult = MINIMAX_DRAW;
+  int bestResult = INITIAL_RESULT;
   for (int square = NORTH_WEST; square < DIMENSION; ++square) {
     if (board[square] == BLANK) {
       int result = getBestResultOfTheMove(static_cast<Square>(square), symbol);
