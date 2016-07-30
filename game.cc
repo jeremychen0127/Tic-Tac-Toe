@@ -120,10 +120,10 @@ int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
   board[squareToPlace] = symbol;
 
   if (isOver() == DRAW) {
-    return 0; // TODO: magical number
+    return MINIMAX_DRAW;
 
   } else if (isOver() == NOT_OVER) {
-    int localBestResult = 0; // TODO: magical number
+    int localBestResult = MINIMAX_DRAW;
     int result;
     Symbol nextPlayer = symbol == O ? X : O;
 
@@ -131,7 +131,8 @@ int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
       if (board[square] == BLANK) {
         result = getBestResultOfTheMove(static_cast<Square>(square), nextPlayer);
         board[square] = BLANK;
-        if ((nextPlayer == O && result > localBestResult) || (nextPlayer == X && result < localBestResult)) {
+        if ((nextPlayer == O && result > localBestResult) ||
+            (nextPlayer == X && result < localBestResult)) {
           localBestResult = result;
         }
       }
@@ -140,13 +141,15 @@ int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
     return localBestResult;
 
   } else {
-    return symbol == O ? 1 : -1; // TODO: magical number
+    return symbol == O ? MINIMAX_O_WINS : MINIMAX_X_WINS;
   }
 }
 
 int Game::minimax() {
+  const int INITIAL_RESULT = -2;
+
   int bestMove;
-  int bestResult = -2; // TODO: magical number
+  int bestResult = INITIAL_RESULT;
   for (int square = NORTH_WEST; square < DIMENSION; ++square) {
     if (board[square] == BLANK) {
       int result = getBestResultOfTheMove(static_cast<Square>(square), O);
@@ -159,6 +162,6 @@ int Game::minimax() {
     }
   }
 
-  return bestMove + 1;
+  return bestMove + 1; // offset of enum and square index
 }
 

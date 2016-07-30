@@ -8,6 +8,11 @@ namespace tictactoe {
   // Number of symbols
   const int NUM_SYMBOLS = 3;
 
+  // Results for minimax algorithm
+  const int MINIMAX_X_WINS = -1;
+  const int MINIMAX_DRAW = 0;
+  const int MINIMAX_O_WINS = 1;
+
   // Symbols to be placed (or nothing placed) on the board
   enum Symbol {BLANK, O, X};
 
@@ -44,6 +49,7 @@ namespace tictactoe {
     GameController *gameController;
     Symbol board[DIMENSION];
     
+    // Returns the best result if the "symbol" is placed in "squareToPlace"
     int getBestResultOfTheMove(Square squareToPlace, Symbol symbol);
 
     public:
@@ -66,6 +72,7 @@ namespace tictactoe {
       // Restarts the game
       void restart();
 
+      // Returns the best move for the AI player by using minimax algorithm
       int minimax();
   };
 }
