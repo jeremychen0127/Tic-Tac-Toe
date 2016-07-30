@@ -131,8 +131,8 @@ int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
       if (board[square] == BLANK) {
         result = getBestResultOfTheMove(static_cast<Square>(square), nextPlayer);
         board[square] = BLANK;
-        if ((nextPlayer == O && result > localBestResult) ||
-            (nextPlayer == X && result < localBestResult)) {
+        if ((nextPlayer == O && result >= localBestResult) ||
+            (nextPlayer == X && result <= localBestResult)) {
           localBestResult = result;
         }
       }
@@ -145,17 +145,16 @@ int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
   }
 }
 
-int Game::minimax() {
-  const int INITIAL_RESULT = -2;
-
+int Game::minimax(Symbol symbol) {
   int bestMove;
-  int bestResult = INITIAL_RESULT;
+  int bestResult = MINIMAX_DRAW;
   for (int square = NORTH_WEST; square < DIMENSION; ++square) {
     if (board[square] == BLANK) {
-      int result = getBestResultOfTheMove(static_cast<Square>(square), O);
+      int result = getBestResultOfTheMove(static_cast<Square>(square), symbol);
       board[square] = BLANK;
 
-      if (result > bestResult) {
+      if ((symbol == O && result >= bestResult) ||
+          (symbol == X && result <= bestResult)) {
         bestResult = result;
         bestMove = square;
       }

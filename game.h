@@ -73,7 +73,7 @@ namespace tictactoe {
       void restart();
 
       // Returns the best move for the AI player by using minimax algorithm
-      int minimax();
+      int minimax(Symbol symbol);
   };
 }
 
