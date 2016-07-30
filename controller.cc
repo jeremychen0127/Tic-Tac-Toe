@@ -94,7 +94,6 @@ void GameController::play() {
       if (playerO->isComputer()) {
         cout << "Computer selecting..." << endl;
         intSquare = game->minimax(O);
-        cout << intSquare << endl;
         cout << "---------------------------------------------------" << endl;
       } else {
         selectSquare(intSquare);
