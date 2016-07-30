@@ -116,8 +116,9 @@ void Game::restart() {
   gameController->clearBoardView();
 }
 
-int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
+int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol, int &recursiveDepth) {
   board[squareToPlace] = symbol;
+  recursiveDepth++;
 
   if (isOver() == DRAW) {
     return MINIMAX_DRAW;
@@ -129,7 +130,7 @@ int Game::getBestResultOfTheMove(Square squareToPlace, Symbol symbol) {
 
     for (int square = NORTH_WEST; square < DIMENSION; ++square) {
       if (board[square] == BLANK) {
-        result = getBestResultOfTheMove(static_cast<Square>(square), nextPlayer);
+        result = getBestResultOfTheMove(static_cast<Square>(square), nextPlayer, recursiveDepth);
         board[square] = BLANK;
         if ((nextPlayer == O && result >= localBestResult) ||
             (nextPlayer == X && result <= localBestResult)) {
@@ -150,15 +151,19 @@ int Game::minimax(Symbol symbol) {
 
   int bestMove;
   int bestResult = INITIAL_RESULT;
+  int deepestDepth = 0;
   for (int square = NORTH_WEST; square < DIMENSION; ++square) {
     if (board[square] == BLANK) {
-      int result = getBestResultOfTheMove(static_cast<Square>(square), symbol);
+      int depth = 0;
+      int result = getBestResultOfTheMove(static_cast<Square>(square), symbol, depth);
       board[square] = BLANK;
 
-      if ((symbol == O && result >= bestResult) ||
-          (symbol == X && result <= bestResult)) {
+      if ((symbol == O && result > bestResult) ||
+          (symbol == X && result < bestResult) ||
+          (result == bestResult && depth > deepestDepth)) {
         bestResult = result;
         bestMove = square;
+        deepestDepth = depth;
       }
     }
   }

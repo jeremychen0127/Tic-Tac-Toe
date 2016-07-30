@@ -50,7 +50,7 @@ namespace tictactoe {
     Symbol board[DIMENSION];
     
     // Returns the best result if the "symbol" is placed in "squareToPlace"
-    int getBestResultOfTheMove(Square squareToPlace, Symbol symbol);
+    int getBestResultOfTheMove(Square squareToPlace, Symbol symbol, int &recursiveDepth);
 
     public:
       Game(GameController *gameController);
